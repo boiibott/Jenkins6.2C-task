@@ -12,6 +12,14 @@ pipeline {
                 echo 'Running unit tests...'
                 echo 'Running integration tests...'
             }
+            post {
+                success {
+                    emailNotification("Unit and Integration Tests", "Success")
+                }
+                failure {
+                    emailNotification("Unit and Integration Tests", "Failure")
+                }
+            }
         }
         stage('Code Analysis') {
             steps {
@@ -21,6 +29,14 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Performing security scan...'
+            }
+            post {
+                success {
+                    emailNotification("Security Scan", "Success")
+                }
+                failure {
+                    emailNotification("Security Scan", "Failure")
+                }
             }
         }
         stage('Deploy to Staging') {
@@ -39,12 +55,13 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            echo 'Pipeline executed successfully.'
-        }
-        failure {
-            echo 'Pipeline execution failed.'
-        }
-    }
+}
+
+def emailNotification(stageName, status) {
+    emailext (
+        to: 'yashmit4863.be22@chitkara.edu.in',
+        subject: "Pipeline ${status} - ${stageName}",
+        body: "The ${stageName} stage has ${status}. Please review the logs attached.",
+        attachLog: true
+    )
 }
