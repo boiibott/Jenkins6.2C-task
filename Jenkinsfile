@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the code...'
+                echo 'Maven: Java build automation with dependency management and convention-over-configuration.'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Running unit tests...'
-                echo 'Running integration tests...'
+                echo 'JUnit will validate individual units of code,'
+                echo 'To test the integration of application components, use Selenium WebDriver.'
             }
             post {
                 success {
@@ -23,12 +23,12 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis...'
+                echo 'In order to make sure the source complies with industry standards, SonarQube will examine it and find errors, vulnerabilities'
             }
         }
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan...'
+                echo 'The codebase will undergo a security scan by OWASP ZAP, which will find known security flaws or possible vulnerabilities such security errors in configuration.'
             }
             post {
                 success {
@@ -41,17 +41,17 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging server...'
+                echo 'AWS CodeDeploy will automate the deployment of the application to a staging server like an AWS EC2 instance.'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging environment...'
+                echo 'Postman will conduct integration tests on the staging environment to ensure the application functions properly in a production-like setting.'
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production server...'
+                echo 'Utilize an additional AWS EC2 instance or AWS CodeDeploy to automate the applications deployment to a production server.'
             }
         }
     }
