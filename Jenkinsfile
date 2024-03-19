@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Maven: Java build automation with dependency management and convention-over-configuration.'
+                echo 'npm is a tool for managing JavaScript packages and build tasks in web development projects.'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo 'JUnit will validate individual units of code,'
-                echo 'To test the integration of application components, use Selenium WebDriver.'
+                echo 'Jest is a JavaScript testing framework by Facebook for unit tests. Cypress is for end-to-end tests on web apps.'
+               
             }
             post {
                 success {
@@ -23,12 +23,12 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'In order to make sure the source complies with industry standards, SonarQube will examine it and find errors, vulnerabilities'
+                echo 'With the use of ESLint, a JavaScript static code analysis tool, code patterns can be found to increase maintainability and quality.'
             }
         }
         stage('Security Scan') {
             steps {
-                echo 'The codebase will undergo a security scan by OWASP ZAP, which will find known security flaws or possible vulnerabilities such security errors in configuration.'
+                echo 'OWASP Dependency-Check finds weak points in project dependencies, looks for parts that might be compromised, and generates security alerts.'
             }
             post {
                 success {
