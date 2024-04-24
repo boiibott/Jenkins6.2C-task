@@ -10,7 +10,7 @@ pipeline {
       stage('Build') {
           steps {
               echo "Fetching the source code from the directory path specified by ${env.DIRECTORY_PATH}"
-              echo "Built the code using maven".
+              echo "Built the code using maven"
           }
       }
       stage('Unit and integration tests') {
